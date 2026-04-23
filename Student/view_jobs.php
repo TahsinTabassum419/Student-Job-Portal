@@ -3,30 +3,10 @@
 
 <div class="container">
 
-<div class="card">
-<h2>Search Jobs</h2>
-
-<form method="GET">
-    <input name="location" placeholder="Location">
-    <input name="title" placeholder="Job Title">
-    <button>Search</button>
-</form>
-</div>
+<h2>All Jobs</h2>
 
 <?php
-$query = "SELECT * FROM jobs WHERE 1=1";
-
-if(!empty($_GET['location'])){
-    $loc = $_GET['location'];
-    $query .= " AND location LIKE '%$loc%'";
-}
-
-if(!empty($_GET['title'])){
-    $title = $_GET['title'];
-    $query .= " AND title LIKE '%$title%'";
-}
-
-$res = mysqli_query($conn,$query);
+$res = mysqli_query($conn,"SELECT * FROM jobs");
 
 while($row = mysqli_fetch_assoc($res)){
     echo "
